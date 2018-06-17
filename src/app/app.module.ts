@@ -27,7 +27,7 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import {PromotionService} from './services/promotion.service';
 import {LeaderService} from './services/leader.service';
 import {LoginComponent} from './login/login.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule , ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import {FormsModule} from '@angular/forms';
     MatSlideToggleModule , MatToolbarModule , MatListModule , MatGridListModule ,
     MatCardModule , MatIconModule , MatProgressSpinnerModule , MatDialogModule , FlexLayoutModule ,
     AppRoutingModule ,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ] ,
   entryComponents: [
     LoginComponent
