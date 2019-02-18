@@ -2,14 +2,14 @@
      fxLayout="column"
      fxLayoutGap="10px">
 
-  <div fxFlex>
+  <div fxFlex @expand>
     <div>
       <h3>Contact Us</h3>
       <hr>
     </div>
   </div>
 
-  <div fxFlex>
+  <div fxFlex @expand>
     <h3>Location Information</h3>
     <div fxLayout="column" fxLayout.gt-sm="row">
       <div fxFlex="50" fxFlexOffset="20px">
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" @expand>
     <h3>Send us your Feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
