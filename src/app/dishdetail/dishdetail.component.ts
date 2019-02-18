@@ -19,6 +19,7 @@ export class DishdetailComponent implements OnInit {
   dishIds: number[];
   prev: number;
   next: number;
+  errMess: string;
 
   commentForm: FormGroup;
   comment: Comment;
@@ -51,9 +52,10 @@ export class DishdetailComponent implements OnInit {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(+params['id'])))
       .subscribe(dish => {
-        this.dish = dish;
-        this.setPrevNext(dish.id);
-      });
+          this.dish = dish;
+          this.setPrevNext(dish.id);
+        } ,
+        errmess => this.errMess = <any>errmess);
   }
 
   setPrevNext(dishId: number) {
@@ -74,7 +76,8 @@ export class DishdetailComponent implements OnInit {
     });
 
     this.commentForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
+      .subscribe(data => this.onValueChanged(data) ,
+        errmess => this.errMess = <any>errmess);
 
     this.onValueChanged(); // (re)set validation messages now
   }
