@@ -45,7 +45,7 @@
   <div fxFlex fxFlexOffset="20px" class="form-size" @expand>
     <h3>Send us your Feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading" @expand>
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -87,5 +87,54 @@
         Submit
       </button>
     </form>
+    <mat-card *ngIf="isLoading && !isShowingResponse"
+              style="display: flex; justify-content: center; align-items: center"
+              @expand>
+      <mat-progress-spinner
+        color="primary"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </mat-card>
+    <mat-card *ngIf="isShowingResponse"
+              style="display: flex;"
+              @expand>
+      <mat-card-header>
+        <mat-card-title>Your Submission</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table>
+          <tr>
+          </tr>
+          <tr>
+            <td><span>First Name:</span></td>
+            <td>{{feedback.firstname}}</td>
+          </tr>
+          <tr>
+            <td><span>Last Name:</span></td>
+            <td>{{feedback.lastname}}</td>
+          </tr>
+          <tr>
+            <td><span>Tel. Number:</span></td>
+            <td>{{feedback.telnum}}</td>
+          </tr>
+          <tr>
+            <td><span>Email:</span></td>
+            <td>{{feedback.email}}</td>
+          </tr>
+          <tr>
+            <td><span>Contact You:</span></td>
+            <td>{{feedback.agree}}</td>
+          </tr>
+          <tr>
+            <td><span>How:</span></td>
+            <td>{{feedback.contacttype}}</td>
+          </tr>
+          <tr>
+            <td><span>Feedback:</span></td>
+            <td>{{feedback.message}}</td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

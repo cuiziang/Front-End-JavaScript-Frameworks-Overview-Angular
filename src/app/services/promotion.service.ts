@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {PROMOTIONS} from '../shared/promotions';
 import {Promotion} from '../shared/promotion';
 
 import {Observable , of} from 'rxjs';
